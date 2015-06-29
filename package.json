@@ -1,0 +1,29 @@
+{
+  "name": "bud-live-server",
+  "version": "0.0.0",
+  "description": "live web server plugin for bud",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test"
+  },
+  "keywords": [
+    "bud",
+    "browserify"
+  ],
+  "repository": {
+    "url": "git@github.com:bud-plugins/bud-live-server.git",
+    "type": "git"
+  },
+  "author": "azer",
+  "license": "BSD",
+  "dependencies": {
+    "debounce-fn": "0.0.0",
+    "faye-websocket": "^0.9.4",
+    "just-a-server": "0.0.0",
+    "local-debug": "0.0.0",
+    "pubsub": "^1.0.2"
+  },
+  "devDependencies": {
+    "concat": "^1.0.0"
+  }
+}
