@@ -1,6 +1,6 @@
 {
   "name": "bud-live-server",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "live web server plugin for bud",
   "main": "index.js",
   "scripts": {

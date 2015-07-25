@@ -8,7 +8,7 @@ var debug = require("local-debug")('index');
 var client = fs.readFileSync(path.join(__dirname, 'live-client.js')).toString();
 
 plugin.title = 'Live Server';
-plugin.params.defaultParams = {
+plugin.defaultParams = {
   watch: false,
   ignore: false
 };
