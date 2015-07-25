@@ -1,21 +1,24 @@
-/* just-a-browserify-server socket client to refresh when the source code changes */
+/* bud-live-server socket client to refresh when the source code changes */
 (function () {
 
   var connected = false;
+  var timer;
+  var ws;
 
   connect();
 
   function connect () {
-    var ws = window.ws = new WebSocket(document.location.origin.replace('http', 'ws'));
+    ws = new WebSocket(document.location.origin.replace('http', 'ws'));
     ws.onopen = open;
     ws.onmessage = message;
     ws.onclose = close;
-
-    console.log('bud-live-server: watching for changes.');
   }
 
   function open () {
+    timer = undefined;
     connected = true;
+    clearTimeout(timer);
+    console.log('bud-live-server: watching for changes.');
   }
 
   function message (event) {
@@ -26,13 +29,13 @@
 
   function close () {
     connected = false;
-    reconnect();
+    if (timer == undefined) reconnect();
   }
 
   function reconnect () {
     if (connected) return;
     connect();
-    setTimeout(reconnect, 1000);
+    timer = setTimeout(reconnect, 1000);
   }
 
 }());

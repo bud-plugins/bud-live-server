@@ -47,9 +47,9 @@ function plugin (tasks, folder, hostname) {
         debug('  Watching task "%s"', name);
       });
 
-      task.onAfterRun.subscribe(function () {
+      task.onAfterRun.subscribe(debounce(function () {
         onUpdate.publish();
-      });
+      }, 250));
     });
 
     server.on('upgrade', function (req, socket, body) {
@@ -67,7 +67,7 @@ function plugin (tasks, folder, hostname) {
       });
 
       function notify () {
-        console.log('notify');
+        debug('Notifying changes');
         ws.send(JSON.stringify({ restart: true }));
       }
     });
