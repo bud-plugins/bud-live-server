@@ -8,8 +8,11 @@ var debug = require("local-debug")('index');
 var client = fs.readFileSync(path.join(__dirname, 'live-client.js')).toString();
 
 plugin.title = 'Live Server';
-plugin.disableWatch = false;
-plugin.disableIgnore = false;
+plugin.params.defaultParams = {
+  watch: false,
+  ignore: false
+};
+
 plugin.params = [
   { name: 'Tasks to watch', desc: 'Separate with comma' },
   { name: 'Folder to serve', desc: 'e.g ./public' },
